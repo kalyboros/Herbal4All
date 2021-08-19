@@ -70,9 +70,10 @@ public class MainActivityNav extends AppCompatActivity {
 
         //takoj ga vrze na login ce ni loginan
         user = FirebaseAuth.getInstance().getCurrentUser();
-        if (user == null) {
-            Intent intent = new Intent(MainActivityNav.this, LoginFragment.class);
-            startActivity(intent);
+
+        if (user != null) {
+            Toast.makeText(MainActivityNav.this, "Prijavljeni ste kot: " + user.getEmail(),
+                    Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -92,8 +93,7 @@ public class MainActivityNav extends AppCompatActivity {
 
         //ce ne pa pove s katerim racunom je prijavljen in nastavi vrednosti
         if (user != null) {
-            Toast.makeText(MainActivityNav.this, "Prijavljeni ste kot: " + user.getEmail(),
-                    Toast.LENGTH_SHORT).show();
+
 
             //TODO: ustvari username,sliko ter ju setaj
 
