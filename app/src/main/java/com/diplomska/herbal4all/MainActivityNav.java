@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +24,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.diplomska.herbal4all.databinding.ActivityMainNavBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.squareup.picasso.Picasso;
 
 public class MainActivityNav extends AppCompatActivity {
 
@@ -93,18 +95,26 @@ public class MainActivityNav extends AppCompatActivity {
 
         //ce ne pa pove s katerim racunom je prijavljen in nastavi vrednosti
         if (user != null) {
-
-
-            //TODO: ustvari username,sliko ter ju setaj
-
-            TextView tvMail = (TextView) findViewById(R.id.textViewEmail);
-            tvMail.setText(user.getEmail());
-
+            updateUI();
 
         }
 
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+
+
+    private void updateUI() {
+        TextView tvMail = (TextView) findViewById(R.id.textViewEmail);
+        tvMail.setText(user.getEmail());
+
+        TextView tvName = (TextView) findViewById(R.id.textViewUsername);
+        tvName.setText(user.getDisplayName());
+
+        ImageView img = (ImageView) findViewById(R.id.imageViewProfile);
+
+        Picasso.get().load(user.getPhotoUrl()).into(img);
     }
 
 
