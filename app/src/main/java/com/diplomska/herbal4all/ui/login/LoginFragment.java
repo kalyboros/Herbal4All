@@ -1,40 +1,45 @@
 package com.diplomska.herbal4all.ui.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.diplomska.herbal4all.RegisterActivity;
 import com.diplomska.herbal4all.databinding.FragmentLoginBinding;
-import com.diplomska.herbal4all.ui.login.LoginViewModel;
+
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginFragment extends Fragment {
 
-    private LoginViewModel loginViewModel;
     private FragmentLoginBinding binding;
+
+    private FirebaseAuth mAuth;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        loginViewModel =
-                new ViewModelProvider(this).get(LoginViewModel.class);
 
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textLogin;
-        loginViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        mAuth = FirebaseAuth.getInstance();
+
+        //TODO: preko bindinga se zdaj klicejo funkcije definirane v fragmentih!
+        binding.textView2.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
+            public void onClick(View view) {
+                //TODO: ce klices iz fragmenta mores tako definirati intent!
+                Intent intent = new Intent(getActivity(), RegisterActivity.class);
+                startActivity(intent);
+
             }
         });
+
         return root;
     }
 
@@ -43,4 +48,9 @@ public class LoginFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
+
+
+
+
+
 }
