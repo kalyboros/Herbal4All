@@ -7,21 +7,7 @@
     tools:context=".ui.login.LoginFragment">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
-        android:layout_width="236dp"
-        android:layout_height="64dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Up. ime"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.112" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextTextPasswordLogin"
         android:layout_width="236dp"
         android:layout_height="64dp"
         android:ems="10"
@@ -34,7 +20,7 @@
         app:layout_constraintVertical_bias="0.246" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Prijava"
@@ -45,6 +31,19 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.371"
         />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddressLogin"
+        android:layout_width="236dp"
+        android:layout_height="64dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.081" />
 
     <TextView
         android:id="@+id/textView2"

@@ -3,6 +3,7 @@ package com.diplomska.herbal4all;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -51,8 +52,11 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.LENGTH_SHORT).show();
                             FirebaseUser user = mAuth.getCurrentUser();
 
-
+                            //TODO: po registraciji updataj user ui
                             //updateUI(user);
+                            Intent intent = new Intent(RegisterActivity.this, MainActivityNav.class);
+                            startActivity(intent);
+
                         } else {
                             // If sign in fails, display a message to the user.
                             //Log.w(TAG, "createUserWithEmail:failure", task.getException());
