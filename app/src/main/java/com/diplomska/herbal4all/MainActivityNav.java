@@ -1,11 +1,15 @@
 package com.diplomska.herbal4all;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Menu;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.diplomska.herbal4all.ui.login.LoginFragment;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -25,6 +29,8 @@ public class MainActivityNav extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainNavBinding binding;
     private FirebaseAuth mAuth;
+    private FirebaseUser user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +59,6 @@ public class MainActivityNav extends AppCompatActivity {
 
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home,
-                R.id.nav_gallery,
-                R.id.nav_slideshow,
                 R.id.nav_login)
                 .setOpenableLayout(drawer)
                 .build();
@@ -62,7 +66,14 @@ public class MainActivityNav extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+
+        //takoj ga vrze na login ce ni loginan
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user == null) {
+            Intent intent = new Intent(MainActivityNav.this, LoginFragment.class);
+            startActivity(intent);
+        }
 
     }
 
@@ -78,6 +89,20 @@ public class MainActivityNav extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main_activity_nav);
+
+        //ce ne pa pove s katerim racunom je prijavljen in nastavi vrednosti
+        if (user != null) {
+            Toast.makeText(MainActivityNav.this, "Prijavljeni ste kot: " + user.getEmail(),
+                    Toast.LENGTH_SHORT).show();
+
+            //TODO: ustvari username,sliko ter ju setaj
+
+            TextView tvMail = (TextView) findViewById(R.id.textViewEmail);
+            tvMail.setText(user.getEmail());
+
+
+        }
+
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
     }

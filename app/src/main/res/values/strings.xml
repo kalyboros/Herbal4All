@@ -17,14 +17,17 @@
     <string name="nav_header_desc">Navigation header</string>
 
     <string name="menu_home">Domača stran</string>
+
     <string name="menu_gallery">Galerija</string>
     <string name="menu_slideshow">Slideshow</string>
 
-    <string name="menu_login">Prijava</string>
-    <string name="menu_pharma">Poišči zdravilo</string>
-    <string name="menu_settings">Nastavitve</string>
+    <string name="menu_login">Prijava/Registracija</string>
+    <string name="menu_pharma">Farmakognozija</string>
     <string name="menu_profile">Profil</string>
+    <string name="menu_quiz">Kviz</string>
+    <string name="menu_questions">Vprašanja</string>
     <!-- Strings related to login -->
+
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
