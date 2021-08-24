@@ -37,19 +37,19 @@
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Zaprtje" />
+                android:text="zaprtje" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Vnetje dihal" />
+                android:text="vnetje dihal" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Slaba prekrvavitev" />
+                android:text="slaba prekrvavitev" />
 
             <com.google.android.material.chip.Chip
                 style="@style/Widget.MaterialComponents.Chip.Choice"
