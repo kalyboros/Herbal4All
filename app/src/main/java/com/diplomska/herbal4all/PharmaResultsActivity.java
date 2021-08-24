@@ -1,6 +1,7 @@
 package com.diplomska.herbal4all;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,17 +22,21 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class PharmaResultsActivity extends AppCompatActivity {
 
     String TAG = "testni";
 
+    List<String> resultPharma = new ArrayList<String>();
+
     RecyclerView recyclerView;
     RecyclerAdapter adapter;
-
-    String data[] = {"January, February", "March", "January", "January, February", "March", "January", "January, February", "March", "January"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,38 +44,15 @@ public class PharmaResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_pharma_results);
 
         Bundle b = this.getIntent().getExtras();
-        String[] simptomi = b.getStringArray("simptomi");
+        String[] resultPharma = b.getStringArray("result");
 
-
-        //firestore
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-
-        db.collection("users")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                Toast.makeText(PharmaResultsActivity.this, document.getData().toString(),
-                                        Toast.LENGTH_SHORT).show();
-                            }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
-                            Toast.makeText(PharmaResultsActivity.this, "Neuspesen query",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-
+            //recyclerview setup prvo se to izvede morem pocakat!!!
             recyclerView = findViewById(R.id.recview);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            adapter = new RecyclerAdapter(this, data);
+            adapter = new RecyclerAdapter(this, resultPharma);
             recyclerView.setAdapter(adapter);
 
+            //Log.d("dejson", "tesst");
 
 
 
@@ -86,7 +68,16 @@ public class PharmaResultsActivity extends AppCompatActivity {
 
 
 
+
+
+/*
+                                    Toast.makeText(PharmaResultsActivity.this,document.getId() + document.getData().toString(),
+                                            Toast.LENGTH_SHORT).show();
+
+                                            String[] stringArray = simptomi.toArray(new String[0]);
+ */
 
     }
+
 
 }

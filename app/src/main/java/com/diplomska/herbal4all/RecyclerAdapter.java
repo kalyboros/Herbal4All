@@ -10,6 +10,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
 
     String data[];
@@ -34,11 +36,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull RecyclerAdapter.ViewHolder holder, int position) {
 
-        holder.textView.setText(data[position]);
-        holder.textView.setOnClickListener(new View.OnClickListener() {
+        //TODO: tu se spilam s stringi pa jih cutam!
+        holder.Ime.setText(data[position]);
+
+
+        holder.Ime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(context, "Povezave do izdelkov še pridejo!",
+                Toast.makeText(context, "Povezave kmalu na voljo!",
                         Toast.LENGTH_SHORT).show();
             }
         });
@@ -50,13 +55,31 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         return data.length;
     }
 
+
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView textView;
+        TextView Ime;
+        /*
+        TextView Delovanje;
+        TextView Oblika;
+        TextView Opozorilo;
+        TextView Priprava;
+        TextView Ucinkovina;
+        TextView imgURL;
+        */
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.textViewRec1);
+            Ime = itemView.findViewById(R.id.textViewRec1);
+            /*
+            Delovanje = itemView.findViewById(R.id.textViewRec1);
+            Oblika = itemView.findViewById(R.id.textViewRec1);
+            Opozorilo = itemView.findViewById(R.id.textViewRec1);
+            Priprava = itemView.findViewById(R.id.textViewRec1);
+            Ucinkovina = itemView.findViewById(R.id.textViewRec1);
+
+             */
+            //TODO: image
 
 
 

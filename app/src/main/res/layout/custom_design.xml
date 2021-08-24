@@ -11,14 +11,22 @@
         android:layout_width="match_parent"
         android:layout_height="40dp">
 
+
         <TextView
             android:id="@+id/textViewRec1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dummy1"
-            android:textSize="20sp"
+            android:textSize="10sp"
             android:layout_gravity="center"
             android:textColor="@color/design_default_color_primary"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+        </ImageView>
+
+
     </androidx.cardview.widget.CardView>
         
 
